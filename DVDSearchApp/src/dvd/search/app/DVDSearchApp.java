@@ -3,6 +3,7 @@ package dvd.search.app;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import javax.swing.*;
 import java.io.FileInputStream;
@@ -39,8 +40,8 @@ public class DVDSearchApp extends JFrame {
         
         try {
 //            FileInputStream fileInputStream = new FileInputStream(new File(mainDir + "\\TITLES.xls"));
-            FileInputStream fileInputStream = new FileInputStream(new File("TITLES.xls"));
-            HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
+            InputStream excelContent = this.getClass().getResourceAsStream("/resources/TITLES.xls");
+            HSSFWorkbook workbook = new HSSFWorkbook(excelContent);
             HSSFSheet worksheet = workbook.getSheet("Sheet1");
             
             for (int i = 0; i < worksheet.getPhysicalNumberOfRows(); i++) {
